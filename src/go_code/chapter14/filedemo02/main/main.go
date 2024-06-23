@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"io"
 	"os"
 )
 
@@ -13,12 +15,24 @@ func main() {
 		fmt.Println("open file err=", err)
 	}
 
-	fmt.Printf("file=%v", file) //file=&{0xc00009ca08}
+	fmt.Printf("file=%v \n", file) //file=&{0xc00009ca08}
 
 	//	关闭文件
-	err = file.Close()
-	if err != nil {
-		fmt.Println("close file err=", err)
-	}
+	defer file.Close()
 
+	//	创建一个 *Reader ，是带缓冲的
+	/*
+		const (
+			defaultBufSize=4096  //默认的缓冲区为4096
+		)
+	*/
+	reader := bufio.NewReader(file)
+	for {
+		str, err := reader.ReadString('\n') //读到换行结束
+		if err == io.EOF {                  //io.EOF表示文件的末尾
+			break
+		}
+		fmt.Print(str)
+	}
+	fmt.Println("文件读取结束...")
 }
