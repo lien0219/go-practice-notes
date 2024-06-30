@@ -6,11 +6,11 @@ import (
 )
 
 type Monster struct {
-	Name     string
-	Age      int
-	Birthday string
-	Sal      float64
-	Skill    string
+	Name     string  `json:"monster_name"`
+	Age      int     `json:"monster_age"`
+	Birthday string  `json:"monster_birthday"`
+	Sal      float64 `json:"monster_sal"`
+	Skill    string  `json:"monster_skill"`
 }
 
 // 结构体序列化
