@@ -29,7 +29,7 @@ func getSumAndSub(n1 int, n2 int) (sum int, sub int) {
 func sum(n1 int, args ...int) int {
 	sum := n1
 	for i := 0; i < len(args); i++ {
-		sum += args[i] //args[0]表示取出args切片的第一个元素，其他的以此类推
+		sum += args[i] //argsdemo[0]表示取出args切片的第一个元素，其他的以此类推
 	}
 	return sum
 }
