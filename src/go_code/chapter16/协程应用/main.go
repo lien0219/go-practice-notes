@@ -58,7 +58,7 @@ func main() {
 		}
 
 		end := time.Now().Unix()
-		fmt.Println("使用协程耗时：", end-start)
+		fmt.Println("使用协程耗时为：", end-start)
 
 		close(primeChan)
 	}()
